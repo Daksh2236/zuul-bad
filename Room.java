@@ -1,4 +1,5 @@
 import java.util.HashMap;
+import java.util.Set;
 
 /**
  * Class Room - a room in an adventure game.
@@ -21,29 +22,15 @@ public class Room
     private Room southExit;
     private Room eastExit;
     private Room westExit;
+    private Room upExit;
+    private Room downExit;
     
     
     private HashMap<String, Room> exits;
     
     public Room getExit(String direction)
     {
-        if(direction.equals("north"))
-        {
-            return northExit;
-        }
-        if(direction.equals("east"))
-        {
-            return northExit;
-        }
-        if(direction.equals("south"))
-        {
-            return northExit;
-        }
-        if(direction.equals("west"))
-        {
-            return northExit;
-        }
-        return null;
+        return exits.get(direction);
     }
 
     /**
@@ -80,19 +67,11 @@ public class Room
     
     public String getExitString()
     {
-        String exits = "Exits:";
-        if(northExit != null){
-            exits += " north";
+        String returnString = "Exits:";
+        Set<String> keys = exits.keySet();
+        for(String exit : keys){
+            returnString += " " + exit;
         }
-        if(southExit != null){
-            exits += " south";
-        }
-        if(eastExit != null){
-            exits += " east";
-        }
-        if(westExit != null){
-            exits += " west";
-        }
-        return exits;
+        return returnString;
     }
 }

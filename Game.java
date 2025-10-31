@@ -49,12 +49,14 @@ public class Game
         outside.setExits("south", lab);
         outside.setExits("east", theater);
         theater.setExits("west", outside);
+        theater.setExits("down", basement);
         pub.setExits("east", outside);
         lab.setExits("north",outside);
         lab.setExits("east",office);
+        lab.setExits("up",attic);
         office.setExits("west", lab);
-        attic.setExits("up", attic);
-        basement.setExits("down", basement);
+        basement.setExits("up", theater);
+        attic.setExits("down", lab);
 
         // start game outside
         currentRoom = outside;  
@@ -151,8 +153,8 @@ public class Game
         String direction = command.getSecondWord();
 
         // Try to leave current room.
-        Room nextRoom= null;
-        if(direction.equals(null)) {
+        Room nextRoom = null;
+        if(direction != null) {
             nextRoom = currentRoom.getExit(direction);
         }
 
