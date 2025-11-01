@@ -4,3 +4,6 @@
 
 17. no because the parser class will automatically update the game class because it is getting all the comands from the
     CommandWords class and communicating it to the Game class
+
+18. I don't think it would be more appropriate for the methods to be static because it will be more clean but then that
+    will make it less flexible 
