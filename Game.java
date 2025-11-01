@@ -140,37 +140,37 @@ public class Game
         System.out.println("around at the university.");
         System.out.println();
         System.out.println("Your command words are:");
-        System.out.println("   go quit help look eat");
+        parser.showCommands();
     }
 
     /** 
-     * Try to go in one direction. If there is an exit, enter
-     * the new room, otherwise print an error message.
-     */
+         * Try to go in one direction. If there is an exit, enter
+         * the new room, otherwise print an error message.
+         */
     private void goRoom(Command command) 
     {
         if(!command.hasSecondWord()) {
-            // if there is no second word, we don't know where to go...
-            System.out.println("Go where?");
-            return;
-        }
-
+                // if there is no second word, we don't know where to go...
+                System.out.println("Go where?");
+                return;
+            }
+    
         String direction = command.getSecondWord();
-
+    
         // Try to leave current room.
         Room nextRoom = null;
         if(direction != null) {
-            nextRoom = currentRoom.getExit(direction);
+                nextRoom = currentRoom.getExit(direction);
         }
-
+    
         if (nextRoom == null) {
-            System.out.println("There is no door!");
+                System.out.println("There is no door!");
         }
         else {
-            currentRoom = nextRoom;
-            System.out.println(currentRoom.getLongDescription());
+                currentRoom = nextRoom;
+                System.out.println(currentRoom.getLongDescription());
         }
-    }
+        }
 
     /** 
          * "Quit" was entered. Check the rest of the command to see
